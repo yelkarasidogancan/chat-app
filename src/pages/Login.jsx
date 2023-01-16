@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 
@@ -15,7 +14,7 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/home");
+      navigate("/");
     } catch (err) {
       setErr(true);
     }
@@ -26,9 +25,8 @@ const Login = () => {
         <span className="logo">Lama Chat</span>
         <span className="title">Login</span>
         <form onSubmit={handleSubmit}>
-          <input type="email" placeholder="email"></input>
-          <input type="password" placeholder="password"></input>
-
+          <input type="email" placeholder="email" />
+          <input type="password" placeholder="password" />
           <button>Sign in</button>
           {err && <span>Something went wrong</span>}
         </form>
